@@ -1,0 +1,25 @@
+### Fixer API
+
+# Base settings for Fixer API
+@baseUrl = https://data.fixer.io/api/
+@apiKey = 
+
+### Symbols Endpoint
+GET {{baseUrl}}/symbols?access_key={{apiKey}}
+Content-Type: application/json
+###
+
+### Historical Rates Endpoint
+GET {{baseUrl}}/2013-12-24?access_key={{apiKey}}
+Content-Type: application/json
+###
+
+### Historical Rates for Specific Symbols
+GET {{baseUrl}}/2023-10-01?access_key={{apiKey}}&base=USD&symbols=EUR,GBP
+Content-Type: application/json
+###
+
+### Historical Rates for Specific Symbols with Base Currency
+GET {{baseUrl}}/2023-10-01?access_key={{apiKey}}&base=EUR&symbols=USD,GBP,CZK,
+Content-Type: application/json
+###
