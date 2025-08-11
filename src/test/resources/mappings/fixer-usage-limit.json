@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/2013-12-24",
+    "queryParameters": {
+      "access_key": {
+        "matches": ".*"
+      },
+      "base": {
+        "equalTo": "EUR"
+      }
+    }
+  },
+  "response": {
+    "status": 429,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "fixer-usage-limit-response.json"
+  }
+}

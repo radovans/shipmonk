@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/2024-12-24",
+    "queryParameters": {
+      "access_key": {
+        "matches": ".*"
+      },
+      "base": {
+        "equalTo": "EUR"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "fixer-historical-response.json"
+  }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<FindBugsFilter>
+
+    <!-- Match any test packages -->
+    <Match>
+        <Package name="~.*\.test"/>
+    </Match>
+
+    <!-- Match any generated context -->
+    <Match>
+        <Package name="~.*\.generated"/>
+    </Match>
+
+    <!-- Don't check JSON object to be serialized -->
+    <Match>
+        <Field type="org.json.JSONObject" />
+        <Bug pattern="SE_BAD_FIELD" />
+    </Match>
+
+</FindBugsFilter>

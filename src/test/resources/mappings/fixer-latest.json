@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/latest",
+    "queryParameters": {
+      "access_key": {
+        "matches": ".*"
+      },
+      "base": {
+        "equalTo": "EUR"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "fixer-latest-response.json"
+  }
+}

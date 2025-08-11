@@ -1,0 +1,81 @@
+<configuration>
+
+    <property name="APP_NAME" value="exchange-rates"/>
+    <property name="LOG_PATH" value="logs/${APP_NAME}"/>
+
+    <!-- Console Appender with Human-Readable, Colorized Format -->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %red(%d{ISO8601}) %highlight(%-5level) [%magenta(%t)] %yellow(%logger{36}): %msg%n%throwable
+            </Pattern>
+            <charset>UTF-8</charset>
+        </layout>
+    </appender>
+
+    <!-- Rolling File Appender with JSON Format -->
+    <appender name="rollingJsonAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <version/>
+                <message/>
+                <loggerName/>
+                <threadName/>
+                <logLevel/>
+                <logLevelValue/>
+                <stackTrace/>
+                <context/>
+                <jsonMessage/>
+                <mdc/>
+                <tags/>
+                <logstashMarkers/>
+                <arguments/>
+                <pattern>
+                    <omitEmptyFields>true</omitEmptyFields>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <appender name="errorFileAppender" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}-errors.log</file>
+        <append>true</append>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>
+                %d{ISO8601} %-5level [%t] %logger{36}: %msg%n%throwable
+            </pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="com.shipmonk.testingday" level="DEBUG" additivity="false">
+        <appender-ref ref="consoleAppender"/>
+        <appender-ref ref="rollingJsonAppender"/>
+        <appender-ref ref="errorFileAppender"/>
+    </logger>
+
+    <!-- Root Logger -->
+    <root level="INFO">
+        <appender-ref ref="consoleAppender"/>
+        <appender-ref ref="rollingJsonAppender"/>
+        <appender-ref ref="errorFileAppender"/>
+    </root>
+</configuration>

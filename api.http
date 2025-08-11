@@ -1,0 +1,51 @@
+### Exchange Rates API
+
+# Base URL for local development
+@baseUrl = http://localhost:8080
+
+### Health Check
+GET {{baseUrl}}/actuator/health
+Content-Type: application/json
+###
+
+### Get today's Exchange Rates
+GET {{baseUrl}}/api/v1/rates/2025-08-13
+Content-Type: application/json
+###
+
+### Get Exchange Rates for a Specific Date
+GET {{baseUrl}}/api/v1/rates/2024-12-24
+Content-Type: application/json
+###
+
+### Get Exchange Rates for a Weekend Date
+GET {{baseUrl}}/api/v1/rates/2024-08-09
+Content-Type: application/json
+###
+
+### Get Exchange Rates for a Holiday Date
+GET {{baseUrl}}/api/v1/rates/2024-01-01
+Content-Type: application/json
+###
+
+## Negative Scenarios
+
+### Get Exchange Rates for a Future Date
+GET {{baseUrl}}/api/v1/rates/2027-01-01
+Content-Type: application/json
+###
+
+### Get Exchange Rates for an Invalid Date Format
+GET {{baseUrl}}/api/v1/rates/invalid-date
+Content-Type: application/json
+###
+
+### Get Exchange Rates for a Non-Existent Date
+GET {{baseUrl}}/api/v1/rates/-9999-12-31
+Content-Type: application/json
+###
+
+### Wrong HTTP Method for Exchange Rates
+POST {{baseUrl}}/api/v1/rates/2024-12-24
+Content-Type: application/json
+###

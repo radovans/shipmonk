@@ -2,15 +2,20 @@
 
 # Base settings for Fixer API
 @baseUrl = https://data.fixer.io/api/
-@apiKey = 
+@apiKey =
 
 ### Symbols Endpoint
 GET {{baseUrl}}/symbols?access_key={{apiKey}}
 Content-Type: application/json
 ###
 
+### Latest Rates Endpoint
+GET {{baseUrl}}/latest?access_key={{apiKey}}
+Content-Type: application/json
+###
+
 ### Historical Rates Endpoint
-GET {{baseUrl}}/2013-12-24?access_key={{apiKey}}
+GET {{baseUrl}}/2024-12-24?access_key={{apiKey}}
 Content-Type: application/json
 ###
 

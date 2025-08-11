@@ -1,8 +1,8 @@
 services:
   database:
-    image: postgres:14-alpine
+    image: postgres:17
     volumes:
-      - ./.data/db-local:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=shipmonk-exchange-rates
       - POSTGRES_USER=shipmonk
@@ -10,3 +10,6 @@ services:
     ports:
       - "127.0.0.1:5402:5432"
     command: postgres -c random_page_cost=1.0
+
+volumes:
+  postgres_data:
